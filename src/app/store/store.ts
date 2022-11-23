@@ -1,4 +1,4 @@
-import { configureStore, EnhancedStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
 
 import { rootReducer } from './reducer';
@@ -23,10 +23,4 @@ const configureStoreWithMiddlewares = (initialState = {}): EnhancedStore => {
 export const store = configureStoreWithMiddlewares();
 
 export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+export type RootState = ReturnType<typeof rootReducer>;
